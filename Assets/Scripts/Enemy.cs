@@ -3,16 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+{    
+    [SerializeField] float _speed;
+    [SerializeField] float _health;
+    [SerializeField] float _damage;
+
+    private View _view;
+
+    private void Start()
     {
-        
+        _view = Globals.Global.View;
+
+        _view.OnRocketHitEnemy.Subscribe((damage, enemy) =>
+        {
+            TakeDamage(damage, enemy);
+        });
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        transform.position = new Vector2(transform.position.x + _speed*Time.deltaTime, transform.position.y); 
     }
+
+    private void TakeDamage(float damage, Enemy enemy)
+    {
+        if (enemy == this)
+        {
+            _health -= damage;           
+        }
+
+        if (_health <= 0)
+        {
+            EnemyDie();
+        }
+    }
+
+    private void EnemyDie()
+    {
+        Destroy(gameObject);
+    }
+
 }
