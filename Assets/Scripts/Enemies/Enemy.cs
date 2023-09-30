@@ -12,12 +12,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        _view = Globals.Global.View;
-
-        _view.OnRocketHitEnemy.Subscribe((damage, enemy) =>
-        {
-            //TakeDamage(damage, enemy);
-        });
+        _view = Globals.Global.View;        
     }
 
     private void Update()
@@ -27,9 +22,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-
         _health -= damage;
-
 
         if (_health <= 0)
         {
@@ -39,12 +32,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void EnemyDie()
-    {
-        /* _view.OnRocketHitEnemy.Unsubscribe((damage, enemy) =>
-         {
-             TakeDamage(damage, enemy);
-         });*/
-
+    {        
         Destroy(gameObject);
     }
 

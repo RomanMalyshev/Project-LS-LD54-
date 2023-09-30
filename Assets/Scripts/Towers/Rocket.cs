@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Utils;
@@ -8,17 +9,10 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] private float _speed = 0.005f;
     [SerializeField] private int _damage;
-    [SerializeField] private Enemy _target;
-
-    private View _view;
-
-    private void Start()
-    {
-        _view = Globals.Global.View;
-    }
+    [SerializeField] private Enemy _target;    
 
     public void SetTarget(Enemy enemy)
-    {        
+    {
         _target = enemy;
     }
 
@@ -36,14 +30,12 @@ public class Rocket : MonoBehaviour
         {
             Destroy(gameObject);
         }
-               
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
-        {
-            //_view.OnRocketHitEnemy.Invoke(_damage, enemy);
+        {            
             enemy.TakeDamage(_damage);
             Destroy(gameObject);
         }

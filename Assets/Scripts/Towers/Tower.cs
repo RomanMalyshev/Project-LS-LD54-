@@ -22,37 +22,50 @@ public class Tower : MonoBehaviour
         _view.OnEnemyDie.Subscribe((enemy) =>
         {
             EnemyDie(enemy);
-        });
-
-        StartCoroutine(LaunchRocet());
+        });               
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            _reachableEnemies.Add(enemy);  
+            _reachableEnemies.Add(enemy);
+
+            if (!_isActive)
+            {
+                StartCoroutine(LaunchRocket());
+            }
+
+            _isActive = true;
         }
     }
 
-    private void Update()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-       
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            _reachableEnemies.Remove(enemy);
+
+            if (_reachableEnemies.Count <= 0)
+            {
+                _isActive = false;
+            }
+        }
     }
 
     private void EnemyDie(Enemy enemy)
     {
         _reachableEnemies.Remove(enemy);
-    }    
+    }
 
-    private IEnumerator LaunchRocet()
-    {
+    private IEnumerator LaunchRocket()
+    {        
         while (_reachableEnemies.Count > 0)
         {
             var rocket = Instantiate(_rocket, transform.position, Quaternion.identity);
             rocket.SetTarget(_reachableEnemies[0]);
 
             yield return new WaitForSeconds(1);
-        }        
+        }
     }
 }

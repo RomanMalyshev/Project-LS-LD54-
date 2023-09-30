@@ -101,6 +101,7 @@ MonoBehaviour:
   _speed: 3
   _damage: 5
   _target: {fileID: 0}
+  _explosion: {fileID: 7056012444394981344, guid: aaa13d3fbe6401f46ae2080de11da6d5, type: 3}
 --- !u!60 &4275640138020549393
 PolygonCollider2D:
   m_ObjectHideFlags: 0
