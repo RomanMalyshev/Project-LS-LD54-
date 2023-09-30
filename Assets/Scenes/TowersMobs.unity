@@ -227,13 +227,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spavner
       objectReference: {fileID: 0}
+    - target: {fileID: 5760344736520500557, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
+      propertyPath: _spavnDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6592582735383591141, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6592582735383591141, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.71
+      value: 7.65
       objectReference: {fileID: 0}
     - target: {fileID: 6592582735383591141, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
       propertyPath: m_LocalPosition.y

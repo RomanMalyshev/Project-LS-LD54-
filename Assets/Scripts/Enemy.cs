@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{    
-    [SerializeField] float _speed;
-    [SerializeField] float _health;
-    [SerializeField] float _damage;
+{
+    [SerializeField] private float _speed;
+    [SerializeField] private float _health;
+    [SerializeField] private float _damage;
 
     private View _view;
 
@@ -16,30 +16,35 @@ public class Enemy : MonoBehaviour
 
         _view.OnRocketHitEnemy.Subscribe((damage, enemy) =>
         {
-            TakeDamage(damage, enemy);
+            //TakeDamage(damage, enemy);
         });
     }
 
     private void Update()
     {
-        transform.position = new Vector2(transform.position.x + _speed*Time.deltaTime, transform.position.y); 
+        transform.position = new Vector2(transform.position.x + _speed * Time.deltaTime, transform.position.y);
     }
 
-    private void TakeDamage(float damage, Enemy enemy)
+    public void TakeDamage(float damage)
     {
-        if (enemy == this)
-        {
-            _health -= damage;           
-        }
+
+        _health -= damage;
+
 
         if (_health <= 0)
         {
+            _view.OnEnemyDie.Invoke(this);
             EnemyDie();
         }
     }
 
     private void EnemyDie()
     {
+        /* _view.OnRocketHitEnemy.Unsubscribe((damage, enemy) =>
+         {
+             TakeDamage(damage, enemy);
+         });*/
+
         Destroy(gameObject);
     }
 

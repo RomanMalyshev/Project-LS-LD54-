@@ -6,9 +6,9 @@ using Utils;
 
 public class Rocket : MonoBehaviour
 {
-    [SerializeField] float _speed = 0.005f;
-    [SerializeField] int _damage;
-    [SerializeField] Enemy _target;
+    [SerializeField] private float _speed = 0.005f;
+    [SerializeField] private int _damage;
+    [SerializeField] private Enemy _target;
 
     private View _view;
 
@@ -26,6 +26,10 @@ public class Rocket : MonoBehaviour
     {
         if (_target != null)
         {
+            Vector3 moveDirection = _target.transform.position - transform.position;
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
             transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
         }
         else
@@ -37,9 +41,10 @@ public class Rocket : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            _view.OnRocketHitEnemy.Invoke(_damage, enemy);
+            //_view.OnRocketHitEnemy.Invoke(_damage, enemy);
+            enemy.TakeDamage(_damage);
             Destroy(gameObject);
         }
     }

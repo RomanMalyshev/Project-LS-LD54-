@@ -11,32 +11,48 @@ public class Tower : MonoBehaviour
     [SerializeField] bool _isActive;
     [SerializeField] Rocket _rocket;
 
+    private View _view;
+
 
     private void Start()
     {
+        _view = Globals.Global.View;
         _shootRadius = GetComponent<Collider2D>();
+
+        _view.OnEnemyDie.Subscribe((enemy) =>
+        {
+            EnemyDie(enemy);
+        });
+
+        StartCoroutine(LaunchRocet());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            _reachableEnemies.Add(enemy);
-            _isActive = true;
+            _reachableEnemies.Add(enemy);  
         }
-
-        InvokeRepeating("LaunchRocet", 0, 1);
     }
 
     private void Update()
     {
-       // if (_isActive)
-            //LaunchRocet();
+       
     }
 
-    private void LaunchRocet()
+    private void EnemyDie(Enemy enemy)
     {
-        var rocket = Instantiate(_rocket, transform.position, Quaternion.identity);
-        rocket.SetTarget(_reachableEnemies[0]);
+        _reachableEnemies.Remove(enemy);
+    }    
+
+    private IEnumerator LaunchRocet()
+    {
+        while (_reachableEnemies.Count > 0)
+        {
+            var rocket = Instantiate(_rocket, transform.position, Quaternion.identity);
+            rocket.SetTarget(_reachableEnemies[0]);
+
+            yield return new WaitForSeconds(1);
+        }        
     }
 }
