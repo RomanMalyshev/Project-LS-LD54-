@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.WSA;
 
-public class Tower : MonoBehaviour
+public class RocketTower : MonoBehaviour
 {
-    [SerializeField] List<Enemy> _reachableEnemies = new List<Enemy>();
-    [SerializeField] Collider2D _shootRadius;
-    [SerializeField] bool _isActive;
-    [SerializeField] Rocket _rocket;
+    [SerializeField] private List<Enemy> _reachableEnemies = new List<Enemy>();
+    [SerializeField] private float _attackSpeed = 1f;    
+    [SerializeField] private bool _isActive;
+    [SerializeField] private Rocket _rocket;
 
+    private Collider2D _shootRadius;
     private View _view;
-
 
     private void Start()
     {
@@ -65,7 +65,7 @@ public class Tower : MonoBehaviour
             var rocket = Instantiate(_rocket, transform.position, Quaternion.identity);
             rocket.SetTarget(_reachableEnemies[0]);
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(_attackSpeed);
         }
     }
 }

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1075857551667730499}
   - component: {fileID: 946087638694224092}
   m_Layer: 3
-  m_Name: Tower
+  m_Name: RocketTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reachableEnemies: []
-  _shootRadius: {fileID: 0}
+  _attackSpeed: 1
   _isActive: 0
-  _rocket: {fileID: 0}
+  _rocket: {fileID: 2593150577095141766, guid: 74360a3f9331b16458c32b03693ed88d, type: 3}
 --- !u!58 &946087638694224092
 CircleCollider2D:
   m_ObjectHideFlags: 0
