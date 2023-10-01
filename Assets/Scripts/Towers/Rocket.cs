@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Utils;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Rocket : MonoBehaviour
 {
     [SerializeField] private float _speed = 0.005f;
     [SerializeField] private int _damage;
-    [SerializeField] private Enemy _target;    
+    [SerializeField] private float _timeToExplode = 5f;
+    [SerializeField] private Enemy _target;
+
+    private void Start()
+    {
+        StartCoroutine(DestroyDelaey());
+    }
 
     public void SetTarget(Enemy enemy)
     {
@@ -28,7 +36,7 @@ public class Rocket : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            transform.position = transform.position + transform.up * _speed * Time.deltaTime;            
         }
     }
 
@@ -39,5 +47,11 @@ public class Rocket : MonoBehaviour
             enemy.TakeDamage(_damage);
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator DestroyDelaey()
+    {       
+        yield return new WaitForSeconds(_timeToExplode);
+        Destroy(gameObject); ;
     }
 }

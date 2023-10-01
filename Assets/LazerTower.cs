@@ -52,22 +52,22 @@ public class LazerTower : MonoBehaviour
     {
         while (true)
         {            
-            for (int i = 0; i < _reachableEnemies.Count; i++)
+            for (int enemyNumber = 0; enemyNumber < _reachableEnemies.Count; enemyNumber++)
             {                
-                StartCoroutine(AttackAnimation(i));
-                _reachableEnemies[i].TakeDamage(_damage);
+                StartCoroutine(AttackAnimation(enemyNumber));
+                _reachableEnemies[enemyNumber].TakeDamage(_damage);
             }
 
             yield return new WaitForSeconds(_attackSpeed);
         }
     }
 
-    private IEnumerator AttackAnimation(int i)
+    private IEnumerator AttackAnimation(int enemyNumber)
     {
         var laser = Instantiate(_lazer, transform.position, Quaternion.identity);
         laser.SetPosition(0, transform.position);
-        laser.SetPosition(1, _reachableEnemies[i].transform.position);
+        laser.SetPosition(1, _reachableEnemies[enemyNumber].transform.position);
         yield return new WaitForSeconds(0.1f);
-        Destroy(laser);
+        Destroy(laser.gameObject);
     }
 }
