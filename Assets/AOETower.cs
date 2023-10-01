@@ -54,7 +54,7 @@ public class AOETower : MonoBehaviour
         while (true)
         {
             StartCoroutine(AttackAnimation());
-            for (int enemyNumber = 0; enemyNumber < _reachableEnemies.Count; i++)
+            for (int enemyNumber = 0; enemyNumber < _reachableEnemies.Count; enemyNumber++)
             {
                 _reachableEnemies[enemyNumber].TakeDamage(_damage);
             }
