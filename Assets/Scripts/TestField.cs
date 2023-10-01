@@ -4,14 +4,16 @@ using Utils;
 
 public class TestField : MonoBehaviour
 {
+    public Sprite CellSprite;
     private FieldModel _fieldModel;
     private AStarPathfinding _pathfind;
     private int _cellSize = 5;
     private Vector3 _originPosition;
+
     private void Start()
     {
         _originPosition = transform.position;
-        _fieldModel = new FieldModel(10, 10, _cellSize, _originPosition);
+        _fieldModel = new FieldModel(10, 10, _cellSize, _originPosition, CellSprite);
         _pathfind = new AStarPathfinding(_fieldModel);
     }
 
@@ -20,14 +22,11 @@ public class TestField : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             var targetPosition = _fieldModel.GetCellPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            var path = _pathfind.FindPath(0, 0, targetPosition.x, targetPosition.y);
+            var path = _pathfind.FindPath(3, 5, targetPosition.x, targetPosition.y);
             if (path != null)
-                for (var i = 0; i < path.Count - 1; i++)
+                for (var i = 0; i < path.Count; i++)
                 {
-                    Debug.DrawLine(
-                        new Vector3(path[i].Coord.x, path[i].Coord.y) * _cellSize + Vector3.one * _cellSize / 2f + _originPosition,
-                        new Vector3(path[i + 1].Coord.x, path[i + 1].Coord.y) * _cellSize+Vector3.one * _cellSize / 2f +_originPosition,
-                        Color.green, 1000f);
+                    _fieldModel.SetColor(path[i].Coord.x,path[i].Coord.y,Color.green);
                 }
 
             else
@@ -38,7 +37,15 @@ public class TestField : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
+            var targetPosition = _fieldModel.GetCellPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            _pathfind.SetWalkableState(targetPosition.x,targetPosition.y,false);
+            _fieldModel.SetColor(targetPosition.x,targetPosition.y,Color.red);
+        }
+        
+        if (Input.GetMouseButtonDown(2))
+        {
             _fieldModel.Reset();
+            _pathfind.Reset();
         }
     }
 }

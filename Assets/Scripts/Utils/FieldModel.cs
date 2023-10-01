@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Utils
@@ -10,20 +11,23 @@ namespace Utils
         private readonly int _cellSize;
         private readonly Vector3 _originPosition;
 
+        private readonly Sprite _sprite;
+
         private readonly Vector2Int[] _fieldArray;
         private readonly Dictionary<(int x, int y), TextMesh> _clickTestInfo = new();
-        
+        private readonly Dictionary<(int x, int y), SpriteRenderer> _posToSprite = new();
+
         public int GetWidth() => _width;
         public int GetHeight() => _height;
-        
-        public FieldModel(int width, int height, int cellSize, Vector3 originPosition)
+
+        public FieldModel(int width, int height, int cellSize, Vector3 originPosition, Sprite cellSprite)
         {
             _width = width;
             _height = height;
             _cellSize = cellSize;
             _originPosition = originPosition;
             _fieldArray = new Vector2Int[_width * _height];
-
+            _sprite = cellSprite;
             DrawDebugField();
         }
 
@@ -37,6 +41,16 @@ namespace Utils
                     Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.red, 1000f);
                     Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.red, 1000f);
 
+                    var sprite = new GameObject("FieldTestSprite", typeof(SpriteRenderer));
+                    sprite.transform.SetParent(debugCells.transform);
+                    sprite.transform.localPosition = GetWorldPosition(x, y) + new Vector3(_cellSize, _cellSize) * 0.5f;
+                    sprite.transform.localScale *= _cellSize;
+                    var spriteRenderer = sprite.GetComponent<SpriteRenderer>();
+                    spriteRenderer.color = Color.black;
+                    spriteRenderer.sprite = _sprite;
+
+                    _posToSprite.Add((x, y), spriteRenderer);
+
                     var cellIndexText = new GameObject("FieldTestCell", typeof(TextMesh));
                     cellIndexText.transform.SetParent(debugCells.transform);
                     cellIndexText.transform.localPosition =
@@ -45,6 +59,7 @@ namespace Utils
                     cellIndexTextMesh.text = $"{x}:{y}";
                     cellIndexTextMesh.anchor = TextAnchor.MiddleCenter;
                     cellIndexTextMesh.alignment = TextAlignment.Center;
+
 
                     var clickInfo = new GameObject("FieldTestCell", typeof(TextMesh));
                     clickInfo.transform.SetParent(debugCells.transform);
@@ -79,6 +94,17 @@ namespace Utils
             {
                 cMesh.Value.text = "0";
             }
+
+            foreach (var cMesh in _posToSprite)
+            {
+                cMesh.Value.color = Color.black;
+            }
+        }
+
+        public void SetColor(int x, int y, Color color)
+        {
+            if (_posToSprite.ContainsKey((x, y)))
+                _posToSprite[(x, y)].color = color;
         }
     }
 }

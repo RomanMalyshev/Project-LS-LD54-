@@ -21,6 +21,7 @@ namespace Utils
             public int FCost => HCost + GCost;
             public Vector2Int Coord;
             public PathNode FromNode;
+            public bool Walkable = true;
         }
 
         public AStarPathfinding(FieldModel field)
@@ -62,7 +63,7 @@ namespace Utils
             while (_openPositions.Count > 0)
             {
                 var currentNode = GetLowestFCostNode(_openPositions);
-                if (currentNode == targetNode)
+                if (currentNode == targetNode && targetNode.Walkable)
                     return CalculatedPath(targetNode);
 
                 _openPositions.Remove(currentNode);
@@ -105,20 +106,34 @@ namespace Utils
             return path;
         }
 
+        public void SetWalkableState(int x, int y, bool state)
+        {
+            if (_positionToNode.ContainsKey(new Vector2Int(x, y)))
+                _positionToNode[new Vector2Int(x, y)].Walkable = state;
+        }
+        
+        public void Reset()
+        {
+            foreach (var node in _positionToNode)
+            {
+                node.Value.Walkable = true;
+            }
+        }
+
         private List<PathNode> GetNeighbours(PathNode currentNode)
         {
             var neighbourList = new List<PathNode>();
 
-            if (currentNode.Coord.x - 1 >= 0)
+            if (currentNode.Coord.x - 1 >= 0 && currentNode.Walkable)
                 neighbourList.Add(_positionToNode[new Vector2Int(currentNode.Coord.x - 1, currentNode.Coord.y)]);
 
-            if (currentNode.Coord.x + 1 < _fieldModel.GetWidth())
+            if (currentNode.Coord.x + 1 < _fieldModel.GetWidth() && currentNode.Walkable)
                 neighbourList.Add(_positionToNode[new Vector2Int(currentNode.Coord.x + 1, currentNode.Coord.y)]);
 
-            if (currentNode.Coord.y - 1 >= 0)
+            if (currentNode.Coord.y - 1 >= 0 && currentNode.Walkable)
                 neighbourList.Add(_positionToNode[new Vector2Int(currentNode.Coord.x, currentNode.Coord.y - 1)]);
 
-            if (currentNode.Coord.y + 1 < _fieldModel.GetHeight())
+            if (currentNode.Coord.y + 1 < _fieldModel.GetHeight() && currentNode.Walkable)
                 neighbourList.Add(_positionToNode[new Vector2Int(currentNode.Coord.x, currentNode.Coord.y + 1)]);
 
             return neighbourList;
