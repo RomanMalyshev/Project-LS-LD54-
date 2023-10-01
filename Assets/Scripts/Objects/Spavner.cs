@@ -26,7 +26,7 @@ public class Spavner : MonoBehaviour
 
         while (enemyNumber < _spavnQueue.Count)
         {            
-           var enemy =  Instantiate(_spavnQueue[enemyNumber], transform.position, Quaternion.identity);
+           var enemy =  Instantiate(_spavnQueue[enemyNumber], transform.position, Quaternion.identity,transform);
             enemyNumber++;
             enemy.SetPath(startPos,endPoint);
             yield return new WaitForSeconds(_spavnDelay);            

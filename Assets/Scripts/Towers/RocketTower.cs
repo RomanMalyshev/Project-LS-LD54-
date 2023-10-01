@@ -64,7 +64,7 @@ public class RocketTower : MonoBehaviour
         {
             var rocket = Instantiate(_rocket, transform.position, Quaternion.identity);
             rocket.SetTarget(_reachableEnemies[0]);
-
+            rocket.transform.SetParent(transform);
             yield return new WaitForSeconds(_attackSpeed);
         }
     }

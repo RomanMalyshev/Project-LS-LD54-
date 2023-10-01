@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Levels", order = 1)]
 public class Level : ScriptableObject
@@ -24,12 +23,13 @@ public class Level : ScriptableObject
     public Vector3 OriginPosition;
 
     public Vector2Int SpawnerPosition;
-    [FormerlySerializedAs("MainTowerPosition")] public Vector2Int MainBuildingPosition;
+    public Vector2Int MainBuildingPosition;
     
     [Header("References")]
     public Spavner Spavner;
 
     public GameObject MainBuilding;
+    public Sprite WallSelf;
+    public Sprite InvincibleWall;
 
-   
 }
