@@ -10,18 +10,24 @@ public class Spavner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpavnEnemy());
+       // StartCoroutine(SpavnEnemy());
     }
 
-    private IEnumerator SpavnEnemy()
+    public void StartSpawn(Vector3 startPos, List<Vector3> path)
+    {
+        StartCoroutine(SpavnEnemy(startPos, path));
+    }
+
+
+    private IEnumerator SpavnEnemy(Vector3 startPos, List<Vector3> path)
     {
         var enemyNumber = 0;
 
         while (enemyNumber < _spavnQueue.Count)
         {            
-            Instantiate(_spavnQueue[enemyNumber], transform.position, Quaternion.identity);
+           var enemy =  Instantiate(_spavnQueue[enemyNumber], startPos, Quaternion.identity);
             enemyNumber++;
-
+            enemy.SetPath(path);
             yield return new WaitForSeconds(_spavnDelay);            
         }
     }

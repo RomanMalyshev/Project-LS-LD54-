@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,15 +10,16 @@ public class Enemy : MonoBehaviour
     public int _damage;
 
     private View _view;
+    private Coroutine _moveRoutine;
 
     private void Start()
     {
-        _view = Globals.Global.View;        
+        _view = Globals.Global.View;
     }
 
     private void Update()
     {
-        transform.position = new Vector2(transform.position.x + _speed * Time.deltaTime, transform.position.y);
+        //transform.position = new Vector2(transform.position.x + _speed * Time.deltaTime, transform.position.y);
     }
 
     public void TakeDamage(float damage)
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
         _health -= damage;
 
         if (_health <= 0)
-        {            
+        {
             EnemyDie();
         }
     }
@@ -36,4 +38,27 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void SetPath(List<Vector3> worldPath)
+    {
+        if (_moveRoutine != null)
+            StopCoroutine(_moveRoutine);
+
+        _moveRoutine = StartCoroutine(MoveRoutine( worldPath));
+    }
+
+    private IEnumerator MoveRoutine( List<Vector3> worldPath)
+    {
+        while (worldPath.Count > 0)
+        {
+            var currentTarget = worldPath[0];
+            while (currentTarget != transform.position)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, currentTarget, _speed * Time.deltaTime);
+                yield return null;
+            }
+
+            worldPath.Remove(currentTarget);
+            yield return null;
+        }
+    }
 }

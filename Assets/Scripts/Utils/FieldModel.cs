@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Utils
@@ -13,8 +12,6 @@ namespace Utils
 
         private readonly Sprite _sprite;
 
-        private readonly Vector2Int[] _fieldArray;
-        private readonly Dictionary<(int x, int y), TextMesh> _clickTestInfo = new();
         private readonly Dictionary<(int x, int y), SpriteRenderer> _posToSprite = new();
 
         public int GetWidth() => _width;
@@ -26,7 +23,6 @@ namespace Utils
             _height = height;
             _cellSize = cellSize;
             _originPosition = originPosition;
-            _fieldArray = new Vector2Int[_width * _height];
             _sprite = cellSprite;
             DrawDebugField();
         }
@@ -59,17 +55,6 @@ namespace Utils
                     cellIndexTextMesh.text = $"{x}:{y}";
                     cellIndexTextMesh.anchor = TextAnchor.MiddleCenter;
                     cellIndexTextMesh.alignment = TextAlignment.Center;
-
-
-                    var clickInfo = new GameObject("FieldTestCell", typeof(TextMesh));
-                    clickInfo.transform.SetParent(debugCells.transform);
-                    clickInfo.transform.localPosition = GetWorldPosition(x, y);
-                    var clickInfoTextMesh = clickInfo.GetComponent<TextMesh>();
-                    clickInfoTextMesh.text = $"0";
-                    clickInfoTextMesh.anchor = TextAnchor.LowerLeft;
-                    clickInfoTextMesh.alignment = TextAlignment.Center;
-
-                    _clickTestInfo.Add((x, y), clickInfoTextMesh);
                 }
             }
 
@@ -88,17 +73,22 @@ namespace Utils
             return new Vector3(x, y) * _cellSize + _originPosition;
         }
 
+        public Vector3 GetWorldPosition(int x, int y, float z)
+        {
+            var worldPosition = new Vector3(x, y) * _cellSize + _originPosition;
+            return new Vector3(worldPosition.x,worldPosition.y,z);
+        }
+        
+        public Vector3 GetWorldCenterPosition(int x, int y, float z)
+        {
+            var worldPosition = new Vector3(x, y) * _cellSize + _originPosition ;
+            return new Vector3(worldPosition.x+ _cellSize/2f,worldPosition.y+ _cellSize/2f,z);
+        }
+
         public void Reset()
         {
-            foreach (var cMesh in _clickTestInfo)
-            {
-                cMesh.Value.text = "0";
-            }
-
             foreach (var cMesh in _posToSprite)
-            {
                 cMesh.Value.color = Color.black;
-            }
         }
 
         public void SetColor(int x, int y, Color color)

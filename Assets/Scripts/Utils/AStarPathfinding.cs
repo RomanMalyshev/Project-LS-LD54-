@@ -4,6 +4,15 @@ using UnityEngine;
 
 namespace Utils
 {
+    public class PathNode
+    {
+        public int GCost;
+        public int HCost;
+        public int FCost => HCost + GCost;
+        public Vector2Int Coord;
+        public PathNode FromNode;
+        public bool Walkable = true;
+    }
     public class AStarPathfinding
     {
         private const int Horizontal_Move_Cost = 20;
@@ -13,17 +22,7 @@ namespace Utils
         private List<PathNode> _openPositions;
         private List<PathNode> _closePositions;
         private Dictionary<Vector2Int, PathNode> _positionToNode = new();
-
-        public class PathNode
-        {
-            public int GCost;
-            public int HCost;
-            public int FCost => HCost + GCost;
-            public Vector2Int Coord;
-            public PathNode FromNode;
-            public bool Walkable = true;
-        }
-
+        
         public AStarPathfinding(FieldModel field)
         {
             _fieldModel = field;
