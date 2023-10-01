@@ -15,12 +15,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _view = Globals.Global.View;
-    }
-
-    private void Update()
-    {
-        //transform.position = new Vector2(transform.position.x + _speed * Time.deltaTime, transform.position.y);
-    }
+    }    
 
     public void TakeDamage(float damage)
     {

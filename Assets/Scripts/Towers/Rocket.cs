@@ -46,6 +46,7 @@ public class Rocket : MonoBehaviour
         {            
             enemy.TakeDamage(_damage);
             Destroy(gameObject);
+            StopAllCoroutines();
         }
     }
 

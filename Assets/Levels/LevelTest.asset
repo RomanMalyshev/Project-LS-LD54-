@@ -16,7 +16,7 @@ MonoBehaviour:
   FieldHeight: 9
   CellSize: 5
   FieldObjects:
-  - Position: {x: 1, y: 5}
+  - Position: {x: 2, y: 5}
     Object: {fileID: 9162656326496470497, guid: cff97a4710a2e72448979da739d8ea32, type: 3}
   - Position: {x: 7, y: 5}
     Object: {fileID: 9162656326496470497, guid: 94767d35012911146a007e5dbe710e51, type: 3}
