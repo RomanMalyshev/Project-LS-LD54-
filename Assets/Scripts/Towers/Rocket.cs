@@ -32,11 +32,12 @@ public class Rocket : MonoBehaviour
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
+            var currentPosition = Vector2.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime) ;
+            transform.position = new Vector3(currentPosition.x,currentPosition.y,transform.position.z) ;
         }
         else
         {
-            transform.position = transform.position + transform.up * _speed * Time.deltaTime;            
+            transform.position +=  transform.up * (_speed * Time.deltaTime); 
         }
     }
 
