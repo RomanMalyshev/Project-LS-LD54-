@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _health;
-    [SerializeField] private float _damage;
+    public int _damage;
 
     private View _view;
 
@@ -25,14 +25,14 @@ public class Enemy : MonoBehaviour
         _health -= damage;
 
         if (_health <= 0)
-        {
-            _view.OnEnemyDie.Invoke(this);
+        {            
             EnemyDie();
         }
     }
 
-    private void EnemyDie()
-    {        
+    public void EnemyDie()
+    {
+        _view.OnEnemyDie.Invoke(this);
         Destroy(gameObject);
     }
 

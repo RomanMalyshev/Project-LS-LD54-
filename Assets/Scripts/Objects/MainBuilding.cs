@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class MainBuilding : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int  _health = 100;
+
+    private View _view;
+
+    private void Start()
     {
-        
+        _view = Globals.Global.View;        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {        
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            TakeDamage(enemy._damage);
+            enemy.EnemyDie();
+        }
+    }
+
+    private void TakeDamage(int damage)
     {
-        
+        _health -= damage;
+
+        if (_health <= 0)
+        {
+            DestroyMainBuilding();
+        }
+    }
+
+    private void DestroyMainBuilding()
+    {
+        _view.OnLevelLost.Invoke();
+        gameObject.SetActive(false);
     }
 }
