@@ -26,14 +26,9 @@ public class Level : ScriptableObject
     public Vector2Int SpawnerPosition;
     [FormerlySerializedAs("MainTowerPosition")] public Vector2Int MainBuildingPosition;
     
-    [Header("References")] 
-    public GameObject LazerTower;
-    public GameObject RocketTower;
-    public GameObject AOETower;
-
+    [Header("References")]
     public Spavner Spavner;
 
-    public GameObject Wall;
     public GameObject MainBuilding;
 
    

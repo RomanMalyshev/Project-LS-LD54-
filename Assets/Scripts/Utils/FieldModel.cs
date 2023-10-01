@@ -34,32 +34,32 @@ namespace Utils
             {
                 for (var y = 0; y < _height; y++)
                 {
-                    Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.red, 1000f);
-                    Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.red, 1000f);
+                   // Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.red, 1000f);
+                   // Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.red, 1000f);
 
                     var sprite = new GameObject("FieldTestSprite", typeof(SpriteRenderer));
                     sprite.transform.SetParent(debugCells.transform);
                     sprite.transform.localPosition = GetWorldPosition(x, y) + new Vector3(_cellSize, _cellSize) * 0.5f;
                     sprite.transform.localScale *= _cellSize;
                     var spriteRenderer = sprite.GetComponent<SpriteRenderer>();
-                    spriteRenderer.color = Color.black;
+                    spriteRenderer.color = Color.white;
                     spriteRenderer.sprite = _sprite;
 
                     _posToSprite.Add((x, y), spriteRenderer);
 
                     var cellIndexText = new GameObject("FieldTestCell", typeof(TextMesh));
                     cellIndexText.transform.SetParent(debugCells.transform);
-                    cellIndexText.transform.localPosition =
-                        GetWorldPosition(x, y) + new Vector3(_cellSize, _cellSize) * 0.5f;
+                    cellIndexText.transform.localPosition = GetWorldPosition(x, y) + new Vector3(_cellSize, _cellSize) * 0.5f;
                     var cellIndexTextMesh = cellIndexText.GetComponent<TextMesh>();
                     cellIndexTextMesh.text = $"{x}:{y}";
                     cellIndexTextMesh.anchor = TextAnchor.MiddleCenter;
                     cellIndexTextMesh.alignment = TextAlignment.Center;
+                    cellIndexTextMesh.fontStyle = FontStyle.Bold;
                 }
             }
 
-            Debug.DrawLine(GetWorldPosition(0, _height), GetWorldPosition(_width, _height), Color.red, 100f);
-            Debug.DrawLine(GetWorldPosition(_width, 0), GetWorldPosition(_width, _height), Color.red, 100f);
+            // Debug.DrawLine(GetWorldPosition(0, _height), GetWorldPosition(_width, _height), Color.red, 100f);
+            //Debug.DrawLine(GetWorldPosition(_width, 0), GetWorldPosition(_width, _height), Color.red, 100f);
         }
 
         public Vector2Int GetCellPosition(Vector3 worldPosition)
@@ -88,7 +88,7 @@ namespace Utils
         public void Reset()
         {
             foreach (var cMesh in _posToSprite)
-                cMesh.Value.color = Color.black;
+                cMesh.Value.color = Color.white;
         }
 
         public void SetColor(int x, int y, Color color)

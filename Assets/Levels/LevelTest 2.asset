@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2e9233e03bee8446a884a04ee5bcb30, type: 3}
-  m_Name: LevelTest
+  m_Name: LevelTest 2
   m_EditorClassIdentifier: 
-  FieldWidth: 10
-  FieldHeight: 9
+  FieldWidth: 8
+  FieldHeight: 8
   CellSize: 5
   FieldObjects:
   - Position: {x: 2, y: 5}
@@ -26,9 +26,9 @@ MonoBehaviour:
     Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
   - Position: {x: 4, y: 6}
     Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
-  CellSprite: {fileID: 21300000, guid: b1828369e1086b44aa911dbe1c8ef000, type: 3}
+  CellSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   OriginPosition: {x: 0, y: 0, z: 0}
-  SpawnerPosition: {x: 4, y: 8}
+  SpawnerPosition: {x: 4, y: 7}
   MainBuildingPosition: {x: 3, y: 0}
   Spavner: {fileID: 5760344736520500557, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
   MainBuilding: {fileID: 2346394148850090165, guid: 92b997634350fe547bb1c1fe40414f88, type: 3}

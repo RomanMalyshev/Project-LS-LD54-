@@ -33,26 +33,28 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetPath(List<Vector3> worldPath)
+    public void SetPath(AStarPathfinding startPos, Vector3 endPoint)
     {
         if (_moveRoutine != null)
             StopCoroutine(_moveRoutine);
 
-        _moveRoutine = StartCoroutine(MoveRoutine( worldPath));
+        _moveRoutine = StartCoroutine(MoveRoutine( startPos,endPoint));
     }
 
-    private IEnumerator MoveRoutine( List<Vector3> worldPath)
+    private IEnumerator MoveRoutine(AStarPathfinding startPos, Vector3 endPoint)
     {
-        while (worldPath.Count > 0)
+        var path = startPos.FindWorldPath(transform.position, endPoint);
+        
+        while (path.Count > 0)
         {
-            var currentTarget = worldPath[0];
+            var currentTarget = path[1];
             while (currentTarget != transform.position)
             {
                 transform.position = Vector3.MoveTowards(transform.position, currentTarget, _speed * Time.deltaTime);
                 yield return null;
             }
-
-            worldPath.Remove(currentTarget);
+            path.Remove(currentTarget);
+            path = startPos.FindWorldPath(transform.position, endPoint);
             yield return null;
         }
     }

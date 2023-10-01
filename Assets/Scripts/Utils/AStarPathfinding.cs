@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -13,6 +14,7 @@ namespace Utils
         public PathNode FromNode;
         public bool Walkable = true;
     }
+
     public class AStarPathfinding
     {
         private const int Horizontal_Move_Cost = 20;
@@ -22,7 +24,7 @@ namespace Utils
         private List<PathNode> _openPositions;
         private List<PathNode> _closePositions;
         private Dictionary<Vector2Int, PathNode> _positionToNode = new();
-        
+
         public AStarPathfinding(FieldModel field)
         {
             _fieldModel = field;
@@ -42,12 +44,22 @@ namespace Utils
             }
         }
 
-        public List<PathNode> FindPath(int xStart, int yStart, int xTarget, int yTarget)
+        public List<Vector3> FindWorldPath(Vector3 startPosition, Vector3 endPosition)
+        {
+            var path = FindPath(
+                _fieldModel.GetCellPosition(startPosition).x,
+                _fieldModel.GetCellPosition(startPosition).y,
+                _fieldModel.GetCellPosition(endPosition).x,
+                _fieldModel.GetCellPosition(endPosition).y);
+            return path?.Select(it => _fieldModel.GetWorldCenterPosition(it.Coord.x, it.Coord.y, -1)).ToList();
+        }
+
+        private List<PathNode> FindPath(int xStart, int yStart, int xTarget, int yTarget)
         {
             if (!_positionToNode.ContainsKey(new Vector2Int(xStart, yStart)) ||
                 !_positionToNode.ContainsKey(new Vector2Int(xTarget, yTarget)))
                 return null;
-            
+
             var startNode = _positionToNode[new Vector2Int(xStart, yStart)];
             var targetNode = _positionToNode[new Vector2Int(xTarget, yTarget)];
 
@@ -114,7 +126,13 @@ namespace Utils
             if (_positionToNode.ContainsKey(new Vector2Int(x, y)))
                 _positionToNode[new Vector2Int(x, y)].Walkable = state;
         }
-        
+
+        public void SetWalkableState(Vector2Int position, bool state)
+        {
+            if (_positionToNode.ContainsKey(new Vector2Int(position.x, position.y)))
+                _positionToNode[new Vector2Int(position.x, position.y)].Walkable = state;
+        }
+
         public void Reset()
         {
             foreach (var node in _positionToNode)
