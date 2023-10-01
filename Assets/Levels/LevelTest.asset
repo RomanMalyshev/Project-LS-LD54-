@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e9233e03bee8446a884a04ee5bcb30, type: 3}
+  m_Name: LevelTest
+  m_EditorClassIdentifier: 
+  FieldWidth: 10
+  FieldHeight: 9
+  CellSize: 5
+  FieldObjects:
+  - Position: {x: 1, y: 5}
+    Object: {fileID: 9162656326496470497, guid: cff97a4710a2e72448979da739d8ea32, type: 3}
+  - Position: {x: 7, y: 5}
+    Object: {fileID: 9162656326496470497, guid: 94767d35012911146a007e5dbe710e51, type: 3}
+  - Position: {x: 4, y: 4}
+    Object: {fileID: 9162656326496470497, guid: 20ee2cb49b7348349abe623606667d25, type: 3}
+  - Position: {x: 4, y: 5}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 4, y: 6}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  CellSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  OriginPosition: {x: 0, y: 0, z: 0}
+  SpawnerPosition: {x: 4, y: 8}
+  MainBuildingPosition: {x: 3, y: 0}
+  LazerTower: {fileID: 0}
+  RocketTower: {fileID: 0}
+  AOETower: {fileID: 0}
+  Spavner: {fileID: 5760344736520500557, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
+  Wall: {fileID: 0}
+  MainBuilding: {fileID: 2346394148850090165, guid: 92b997634350fe547bb1c1fe40414f88, type: 3}

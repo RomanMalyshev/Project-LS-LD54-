@@ -44,6 +44,10 @@ namespace Utils
 
         public List<PathNode> FindPath(int xStart, int yStart, int xTarget, int yTarget)
         {
+            if (!_positionToNode.ContainsKey(new Vector2Int(xStart, yStart)) ||
+                !_positionToNode.ContainsKey(new Vector2Int(xTarget, yTarget)))
+                return null;
+            
             var startNode = _positionToNode[new Vector2Int(xStart, yStart)];
             var targetNode = _positionToNode[new Vector2Int(xTarget, yTarget)];
 
