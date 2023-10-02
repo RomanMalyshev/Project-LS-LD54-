@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Levels", order = 1)]
 public class Level : ScriptableObject
@@ -24,7 +25,7 @@ public class Level : ScriptableObject
     public int CellSize;
 
     public List<FieldObjectPosition> FieldObjects;
-    public List<Vector2Int> PositionOfInvicibleWalls;
+    [FormerlySerializedAs("PositionOfInvicibleWalls")] public List<Vector2Int> notBuild;
     public Sprite CellSprite;
 
     public Vector3 OriginPosition;
