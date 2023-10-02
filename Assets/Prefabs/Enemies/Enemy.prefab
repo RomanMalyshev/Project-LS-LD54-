@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _health: 10
+  _health: 20
   _damage: 40
 --- !u!58 &8904552709678014152
 CircleCollider2D:
