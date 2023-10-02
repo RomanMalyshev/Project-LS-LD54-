@@ -24,12 +24,19 @@ MonoBehaviour:
     Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
   - Position: {x: 1, y: 6}
     Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
-  PositionOfInvicibleWalls:
-  - {x: 1, y: 1}
+  - Position: {x: 7, y: 1}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 8, y: 1}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 9, y: 1}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 3, y: 1}
+    Object: {fileID: 9162656326496470497, guid: 20ee2cb49b7348349abe623606667d25, type: 3}
+  PositionOfInvicibleWalls: []
   CellSprite: {fileID: 21300000, guid: b1828369e1086b44aa911dbe1c8ef000, type: 3}
   OriginPosition: {x: 0, y: 0, z: 0}
   SpawnerPosition: {x: 0, y: 8}
-  MainBuildingPosition: {x: 8, y: 0}
+  MainBuildingPosition: {x: 9, y: 0}
   WallsCount: 10
   Spavner: {fileID: 5760344736520500557, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
   MainBuilding: {fileID: 2346394148850090165, guid: 92b997634350fe547bb1c1fe40414f88, type: 3}
@@ -37,4 +44,9 @@ MonoBehaviour:
   InvincibleWall: {fileID: 2346394148850090165, guid: acbaf73783aecde4dabd5ffcc036e7f3, type: 3}
   _spavnQueue:
   - _enemies:
-    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 2549522002709877332, guid: 53a70891d8c7f2f4db5fafcf092a73d9, type: 3}
+    - {fileID: 2549522002709877332, guid: 53a70891d8c7f2f4db5fafcf092a73d9, type: 3}
+  - _enemies:
+    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
+    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
+    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
