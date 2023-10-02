@@ -114,6 +114,8 @@ public class TestField : MonoBehaviour
         }
 
         _spavner.StartSpawn(_pathfind, mainBuilding.transform.position, _levelCount);
+        
+        
     }
 
     private void Update()
