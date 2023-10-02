@@ -42,7 +42,7 @@ public class Spavner : MonoBehaviour
         var enemyNumber = 0;
         _deadEnemies = 0;
 
-        while (enemyNumber < _spavnQueue.Count)
+        while (enemyNumber < _spavnQueue[_waveCount]._enemies.Count)
         {
             var enemy = Instantiate(_spavnQueue[_waveCount]._enemies[enemyNumber], transform.position, Quaternion.identity, transform);
             enemyNumber++;

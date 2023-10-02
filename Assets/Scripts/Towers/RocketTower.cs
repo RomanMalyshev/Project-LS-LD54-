@@ -65,7 +65,7 @@ public class RocketTower : MonoBehaviour
             var rocket = Instantiate(_rocket, new Vector3(transform.position.x,transform.position.y,-1), Quaternion.identity);
             rocket.SetTarget(_reachableEnemies[0]);
             rocket.transform.SetParent(transform);
-            Debug.Log(rocket.transform.position);
+            //Debug.Log(rocket.transform.position);
             yield return new WaitForSeconds(_attackSpeed);
         }
     }

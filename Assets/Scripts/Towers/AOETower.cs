@@ -68,6 +68,5 @@ public class AOETower : MonoBehaviour
         _atackSprite.color = new Color(0.54f, 0f, 1f, 0.3f);
         yield return new WaitForSeconds(0.1f);
         _atackSprite.color = _color;
-
     }
 }

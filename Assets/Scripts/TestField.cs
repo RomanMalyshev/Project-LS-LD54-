@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -17,7 +18,7 @@ public class TestField : MonoBehaviour
     private GameObject _levelContainer;
     private View _view;
     private int _levelCount = 0;
-    private int _wallsAvalible;
+    private int _wallsAvalible;   
 
 
     private void Start()
@@ -92,16 +93,23 @@ public class TestField : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && _wallsAvalible > 0)
         {
-            _wallsAvalible--;
-            _view.OnWallsCountChange.Invoke(_wallsAvalible);
-
             var targetPosition = _fieldModel.GetCellPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+            if (targetPosition.x <= Levels[_levelCount].FieldWidth - 1 && targetPosition.y <= Levels[_levelCount].FieldHeight - 1)
+            {
+                if (targetPosition.x >= 0 && targetPosition.y >= 0)
+                {
+                    _wallsAvalible--;
+                    _view.OnWallsCountChange.Invoke(_wallsAvalible);                    
+                }              
+            }
+
             _pathfind.SetWalkableState(targetPosition.x, targetPosition.y, false);
             _fieldModel.SetSprite(targetPosition.x, targetPosition.y, Levels[_levelCount].WallSelf);
         }
 
         if (Input.GetMouseButtonDown(1))
-        {            
+        {           
             _fieldModel.Reset();
             _pathfind.Reset();
         }
