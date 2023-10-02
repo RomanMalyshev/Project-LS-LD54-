@@ -114,11 +114,6 @@ namespace Utils
                 cMesh.Value.color = Color.white;
                 cMesh.Value.sprite = _sprite;
             }
-
-            foreach (var cellState in _posToSelectable)
-            {
-                _posToSelectable[cellState.Key] = CellState.selectable;
-            }
         }
 
         public void SetColor(int x, int y, Color color)

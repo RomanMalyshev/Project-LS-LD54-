@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using Utils;
 
@@ -59,6 +60,13 @@ public class Enemy : MonoBehaviour
             }
             path.Remove(currentTarget);
             path = pathFinder.FindWorldPath(transform.position, endPoint);
+            if (path == null)
+            {
+                Globals.Global.PlayerBlockPath.Invoke();
+                Debug.Log("No path");
+                path = pathFinder.FindWorldPath(transform.position, endPoint);
+            }
+
             yield return null;
         }
     }
