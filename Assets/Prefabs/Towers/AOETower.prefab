@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 3438363292659137552}
   - component: {fileID: 946087638694224092}
   - component: {fileID: 5006649418704752614}
+  - component: {fileID: -5222847812975339735}
+  - component: {fileID: 7399355720685379657}
   m_Layer: 3
   m_Name: AOETower
   m_TagString: Untagged
@@ -139,7 +141,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -222,3 +224,38 @@ MonoBehaviour:
   _attackSpeed: 1
   _damage: 2
   _atackSprite: {fileID: 2178354972937842959}
+--- !u!114 &-5222847812975339735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162656326496470497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 0.14117648, g: 0.019607846, b: 0.13417958, a: 1}
+  glowBrightness: 5.96
+  outlineWidth: 2
+  alphaThreshold: 0
+  drawOutside: 0
+  enableInstancing: 0
+--- !u!114 &7399355720685379657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162656326496470497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 93d793f7745c83d46bc81c2a86cea812, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0

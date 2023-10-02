@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3294426549354567183}
   - component: {fileID: 1889034468819349573}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f627705318e42424bb9f36228953deea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d42a72291c9e71a4bac440756a77a565, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.14150941, g: 0.01811778, b: 0.08605028, a: 1}
-  glowBrightness: 5
+  glowColor: {r: 0.14117648, g: 0.12253797, b: 0.019607846, a: 1}
+  glowBrightness: 5.06
   outlineWidth: 1
   alphaThreshold: 0
   drawOutside: 0
