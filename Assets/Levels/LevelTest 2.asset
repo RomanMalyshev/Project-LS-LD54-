@@ -16,23 +16,41 @@ MonoBehaviour:
   FieldHeight: 9
   CellSize: 5
   FieldObjects:
-  - Position: {x: 3, y: 6}
-    Object: {fileID: 9162656326496470497, guid: cff97a4710a2e72448979da739d8ea32, type: 3}
+  - Position: {x: 3, y: 8}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 3, y: 7}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 4, y: 7}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 5, y: 7}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 4, y: 4}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
   - Position: {x: 4, y: 1}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 5, y: 1}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 6, y: 1}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 6, y: 0}
+    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
+  - Position: {x: 1, y: 4}
+    Object: {fileID: 9162656326496470497, guid: cff97a4710a2e72448979da739d8ea32, type: 3}
+  - Position: {x: 8, y: 4}
+    Object: {fileID: 9162656326496470497, guid: cff97a4710a2e72448979da739d8ea32, type: 3}
+  - Position: {x: 1, y: 1}
     Object: {fileID: 9162656326496470497, guid: 94767d35012911146a007e5dbe710e51, type: 3}
-  - Position: {x: 5, y: 5}
-    Object: {fileID: 9162656326496470497, guid: 20ee2cb49b7348349abe623606667d25, type: 3}
-  - Position: {x: 1, y: 2}
+  - Position: {x: 5, y: 4}
     Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
-  - Position: {x: 3, y: 5}
-    Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
-  PositionOfInvicibleWalls:
+  - Position: {x: 8, y: 7}
+    Object: {fileID: 9162656326496470497, guid: 94767d35012911146a007e5dbe710e51, type: 3}
+  notBuild:
   - {x: 1, y: 1}
   CellSprite: {fileID: 21300000, guid: b1828369e1086b44aa911dbe1c8ef000, type: 3}
   OriginPosition: {x: 0, y: 0, z: 0}
-  SpawnerPosition: {x: 1, y: 7}
-  MainBuildingPosition: {x: 8, y: 0}
-  WallsCount: 5
+  SpawnerPosition: {x: 4, y: 8}
+  MainBuildingPosition: {x: 5, y: 0}
+  WallsCount: 10
   Spavner: {fileID: 5760344736520500557, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
   MainBuilding: {fileID: 2346394148850090165, guid: 92b997634350fe547bb1c1fe40414f88, type: 3}
   WallSelf: {fileID: 21300000, guid: 4528f41ec2b4ed74cbe026bbf3aebfb1, type: 3}
