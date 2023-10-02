@@ -64,9 +64,9 @@ public class LazerTower : MonoBehaviour
 
     private IEnumerator AttackAnimation(int enemyNumber)
     {
-        var laser = Instantiate(_lazer, transform.position, Quaternion.identity,transform);
-        laser.SetPosition(0, transform.position);
-        laser.SetPosition(1, _reachableEnemies[enemyNumber].transform.position);
+        var laser = Instantiate(_lazer, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity,transform);
+        laser.SetPosition(0, new Vector3(transform.position.x, transform.position.y, -2));
+        laser.SetPosition(1, new Vector3(_reachableEnemies[enemyNumber].transform.position.x, _reachableEnemies[enemyNumber].transform.position.y, -2));
         yield return new WaitForSeconds(0.1f);
         Destroy(laser.gameObject);
     }

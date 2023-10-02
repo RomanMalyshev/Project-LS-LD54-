@@ -24,6 +24,8 @@ public class Level : ScriptableObject
 
     public Vector2Int SpawnerPosition;
     public Vector2Int MainBuildingPosition;
+
+    public int WallsCount;
     
     [Header("References")]
     public Spavner Spavner;

@@ -10,7 +10,8 @@ public class MainBuilding : MonoBehaviour
 
     private void Start()
     {
-        _view = Globals.Global.View;        
+        _view = Globals.Global.View;
+        _view.OnHPChange.Invoke(_health);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,6 +26,7 @@ public class MainBuilding : MonoBehaviour
     private void TakeDamage(int damage)
     {
         _health -= damage;
+        _view.OnHPChange.Invoke(_health);
 
         if (_health <= 0)
         {

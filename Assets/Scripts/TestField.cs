@@ -1,10 +1,13 @@
-    using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using Utils;
 
 public class TestField : MonoBehaviour
 {
-    public Level Level;
+    public List<Level> Levels;
     public Button Restart;
     public Button StartLevel;
     private FieldModel _fieldModel;
@@ -12,31 +15,69 @@ public class TestField : MonoBehaviour
 
     private Spavner _spavner;
     private GameObject _levelContainer;
+    private View _view;
+    private int _levelCount = 0;
+    private int _wallsAvalible;
+
 
     private void Start()
     {
-        Restart.onClick.AddListener(() => Destroy(_levelContainer));
-        StartLevel.onClick.AddListener(CreateLevel);
+        _view = Globals.Global.View;
+        Restart.onClick.AddListener(() =>
+        {
+            Destroy(_levelContainer);
+            CreateLevel();
+        });
 
+        StartLevel.onClick.AddListener(NextLevel);
+
+        _view.OnLevelWin.Subscribe(() =>
+        {
+            Destroy(_levelContainer);
+        });
+
+        _view.OnLevelLost.Subscribe(() =>
+        {
+            Destroy(_levelContainer);
+        });        
+
+        CreateLevel();
+    }  
+
+    private void NextLevel()
+    {
+        if (_levelCount + 1 < Levels.Count)
+        {
+            _levelCount++;
+        }
+        else
+        {
+            _levelCount = 0;
+        }
         CreateLevel();
     }
 
     private void CreateLevel()
     {
+        _view.OnLevelStart.Invoke();
+
+        _wallsAvalible = Levels[_levelCount].WallsCount;
+        _view.OnWallsCountChange.Invoke(_wallsAvalible);
+
         _levelContainer = new GameObject("LevelContainer");
 
-        _fieldModel = new FieldModel(Level.FieldWidth, Level.FieldHeight, Level.CellSize, Level.OriginPosition,
-            Level.CellSprite, _levelContainer.transform);
+        _fieldModel = new FieldModel(Levels[_levelCount].FieldWidth, Levels[_levelCount].FieldHeight, Levels[_levelCount].CellSize, Levels[_levelCount].OriginPosition,
+            Levels[_levelCount].CellSprite, _levelContainer.transform);
         _pathfind = new AStarPathfinding(_fieldModel);
-        _spavner = Instantiate(Level.Spavner, _levelContainer.transform);
-        var spawnerPosition = _fieldModel.GetWorldCenterPosition(Level.SpawnerPosition.x, Level.SpawnerPosition.y, -1);
+        _spavner = Instantiate(Levels[_levelCount].Spavner, _levelContainer.transform);
+        var spawnerPosition = _fieldModel.GetWorldCenterPosition(Levels[_levelCount].SpawnerPosition.x, Levels[_levelCount].SpawnerPosition.y, -1);
         _spavner.transform.position = spawnerPosition;
 
-        var mainBuilding = Instantiate(Level.MainBuilding,
-            _fieldModel.GetWorldCenterPosition(Level.MainBuildingPosition.x, Level.MainBuildingPosition.y, -1),
+        var mainBuilding = Instantiate(Levels[_levelCount].MainBuilding,
+            _fieldModel.GetWorldCenterPosition(Levels[_levelCount].MainBuildingPosition.x, Levels[_levelCount].MainBuildingPosition.y, -1),
             Quaternion.identity, _levelContainer.transform);
 
-        foreach (var fieldObject in Level.FieldObjects)
+        foreach (var fieldObject in Levels[_levelCount].FieldObjects)
         {
             Instantiate(fieldObject.Object,
                 _fieldModel.GetWorldCenterPosition(fieldObject.Position.x, fieldObject.Position.y, -1),
@@ -45,19 +86,22 @@ public class TestField : MonoBehaviour
         }
 
         _spavner.StartSpawn(_pathfind, mainBuilding.transform.position);
-    }
+    }   
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _wallsAvalible > 0)
         {
+            _wallsAvalible--;
+            _view.OnWallsCountChange.Invoke(_wallsAvalible);
+
             var targetPosition = _fieldModel.GetCellPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             _pathfind.SetWalkableState(targetPosition.x, targetPosition.y, false);
-            _fieldModel.SetSprite(targetPosition.x, targetPosition.y, Level.WallSelf);
+            _fieldModel.SetSprite(targetPosition.x, targetPosition.y, Levels[_levelCount].WallSelf);
         }
 
         if (Input.GetMouseButtonDown(1))
-        {
+        {            
             _fieldModel.Reset();
             _pathfind.Reset();
         }

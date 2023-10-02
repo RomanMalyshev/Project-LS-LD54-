@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e9233e03bee8446a884a04ee5bcb30, type: 3}
+  m_Name: LevelTest 3
+  m_EditorClassIdentifier: 
+  FieldWidth: 10
+  FieldHeight: 9
+  CellSize: 5
+  FieldObjects: []
+  CellSprite: {fileID: 21300000, guid: b1828369e1086b44aa911dbe1c8ef000, type: 3}
+  OriginPosition: {x: 0, y: 0, z: 0}
+  SpawnerPosition: {x: 1, y: 7}
+  MainBuildingPosition: {x: 8, y: 0}
+  WallsCount: 3
+  Spavner: {fileID: 5760344736520500557, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
+  MainBuilding: {fileID: 2346394148850090165, guid: 92b997634350fe547bb1c1fe40414f88, type: 3}
+  WallSelf: {fileID: 21300000, guid: 4528f41ec2b4ed74cbe026bbf3aebfb1, type: 3}
+  InvincibleWall: {fileID: 21300000, guid: f627705318e42424bb9f36228953deea, type: 3}

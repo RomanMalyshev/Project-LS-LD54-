@@ -65,7 +65,7 @@ public class AOETower : MonoBehaviour
 
     private IEnumerator AttackAnimation()
     {
-        _atackSprite.color = new Color(1f, 0f, 0f, 0.5f);
+        _atackSprite.color = new Color(0.54f, 0f, 1f, 0.3f);
         yield return new WaitForSeconds(0.1f);
         _atackSprite.color = _color;
 
