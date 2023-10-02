@@ -21,8 +21,22 @@ public class TestField : MonoBehaviour
     private int _wallsAvalible;
 
     private Vector2Int? _lastWallPosition;
+
     private void Start()
     {
+        Globals.Global.PlayerBlockPath.Subscribe(() =>
+        {
+            if (_lastWallPosition != null)
+            {
+                _fieldModel.SetSprite(_lastWallPosition.Value.x, _lastWallPosition.Value.y, Levels[_levelCount].CellSprite);
+                Levels[_levelCount].WallsCount++;
+                _wallsAvalible++;
+                _view.OnWallsCountChange.Invoke(_wallsAvalible);
+                _pathfind.SetWalkableState(_lastWallPosition.Value, true);
+                _lastWallPosition = null;
+            }
+        });
+
         _view = Globals.Global.View;
         Restart.onClick.AddListener(() =>
         {
@@ -107,11 +121,12 @@ public class TestField : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && _wallsAvalible > 0)
         {
             var targetPosition = _fieldModel.GetCellPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            if (_fieldModel.CellPositionExist(targetPosition) && _fieldModel.GetCellState(targetPosition) == FieldModel.CellState.selectable)
+            if (_fieldModel.CellPositionExist(targetPosition) &&
+                _fieldModel.GetCellState(targetPosition) == FieldModel.CellState.selectable)
             {
                 _wallsAvalible--;
                 _view.OnWallsCountChange.Invoke(_wallsAvalible);
-                        
+
                 _pathfind.SetWalkableState(targetPosition.x, targetPosition.y, false);
                 _fieldModel.SetSprite(targetPosition.x, targetPosition.y, Levels[_levelCount].WallSelf);
                 _fieldModel.SetSelectable(targetPosition, FieldModel.CellState.notSelectable);
