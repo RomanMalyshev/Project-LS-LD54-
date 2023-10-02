@@ -52,7 +52,7 @@ public class Spavner : MonoBehaviour
 
     private void EnemyDie(Enemy enemy)
     {
-        _deadEnemies++;
+        _deadEnemies++;        
 
         if (_deadEnemies == _levels[_currentLevel]._spavnQueue[_waveCount]._enemies.Count)
         {
@@ -70,7 +70,7 @@ public class Spavner : MonoBehaviour
     }
 
     private void OnDestroy()
-    {
+    {        
         _view.OnEnemyDie.Unsubscribe(EnemyDie);    
     }
 }
