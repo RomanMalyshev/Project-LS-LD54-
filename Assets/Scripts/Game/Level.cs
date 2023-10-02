@@ -25,7 +25,8 @@ public class Level : ScriptableObject
     public int CellSize;
 
     public List<FieldObjectPosition> FieldObjects;
-    [FormerlySerializedAs("PositionOfInvicibleWalls")] public List<Vector2Int> notBuild;
+    [FormerlySerializedAs("PositionOfInvicibleWalls")] 
+    public List<Vector2Int> notBuild;
     public Sprite CellSprite;
 
     public Vector3 OriginPosition;
@@ -45,5 +46,5 @@ public class Level : ScriptableObject
     [Header("References")]
 
     public List<SpawnWave> _spavnQueue;
-
+    
 }
