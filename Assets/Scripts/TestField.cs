@@ -58,6 +58,7 @@ public class TestField : MonoBehaviour
         _view.OnLevelStart.Invoke();
 
         _wallsAvalible = Levels[_levelCount].WallsCount;
+        Debug.Log(_wallsAvalible);
         _view.OnWallsCountChange.Invoke(_wallsAvalible);
 
         _levelContainer = new GameObject("LevelContainer");

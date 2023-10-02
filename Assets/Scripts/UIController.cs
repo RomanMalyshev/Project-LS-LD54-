@@ -84,6 +84,7 @@ public class UIController : MonoBehaviour
 
     private void WallsCountChange(int walls)
     {
+        Debug.Log(walls);
         _wallsCount.text = walls.ToString();
     }
 
