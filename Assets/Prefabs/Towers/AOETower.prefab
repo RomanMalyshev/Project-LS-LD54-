@@ -220,5 +220,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reachableEnemies: []
   _attackSpeed: 1
-  _damage: 5
+  _damage: 2
   _atackSprite: {fileID: 2178354972937842959}
