@@ -21,10 +21,7 @@ public class Spavner : MonoBehaviour
     {
         _view = Globals.Global.View;
 
-        _view.OnEnemyDie.Subscribe((enemy) =>
-        {
-            EnemyDie();
-        });               
+        _view.OnEnemyDie.Subscribe(EnemyDie);               
 
         _view.OnWawesChange.Invoke(_waveCount, _levels[0]._spavnQueue.Count);
     }
@@ -53,7 +50,7 @@ public class Spavner : MonoBehaviour
         }
     }
 
-    private void EnemyDie()
+    private void EnemyDie(Enemy enemy)
     {
         _deadEnemies++;
 
@@ -70,6 +67,11 @@ public class Spavner : MonoBehaviour
                 StartCoroutine(SpavnNewWave(_pathFinder, _targetPosition));
             }            
         }
+    }
+
+    private void OnDestroy()
+    {
+        _view.OnEnemyDie.Unsubscribe(EnemyDie);    
     }
 }
 
