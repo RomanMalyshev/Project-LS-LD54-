@@ -25,3 +25,6 @@ MonoBehaviour:
   MainBuilding: {fileID: 2346394148850090165, guid: 92b997634350fe547bb1c1fe40414f88, type: 3}
   WallSelf: {fileID: 21300000, guid: 4528f41ec2b4ed74cbe026bbf3aebfb1, type: 3}
   InvincibleWall: {fileID: 21300000, guid: f627705318e42424bb9f36228953deea, type: 3}
+  _spavnQueue:
+  - _enemies:
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}

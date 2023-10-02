@@ -86,7 +86,7 @@ public class TestField : MonoBehaviour
             _pathfind.SetWalkableState(fieldObject.Position, false);
         }
 
-        _spavner.StartSpawn(_pathfind, mainBuilding.transform.position);
+        _spavner.StartSpawn(_pathfind, mainBuilding.transform.position, _levelCount);
     }   
 
     private void Update()

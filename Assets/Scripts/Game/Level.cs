@@ -11,7 +11,13 @@ public class Level : ScriptableObject
         public Vector2Int Position;
         public GameObject Object;
     }
-    
+
+    [Serializable]
+    public class SpawnWave
+    {
+        public List<Enemy> _enemies;
+    }
+
     [Header("Field Settings")]
     public int FieldWidth;
     public int FieldHeight;
@@ -26,12 +32,16 @@ public class Level : ScriptableObject
     public Vector2Int MainBuildingPosition;
 
     public int WallsCount;
-    
+
     [Header("References")]
     public Spavner Spavner;
 
     public GameObject MainBuilding;
     public Sprite WallSelf;
     public Sprite InvincibleWall;
+
+    [Header("References")]
+
+    public List<SpawnWave> _spavnQueue;
 
 }

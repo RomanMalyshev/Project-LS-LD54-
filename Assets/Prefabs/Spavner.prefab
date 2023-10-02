@@ -45,16 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01cb91e669036244b7bf3c9e3620e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spavnQueue:
-  - _enemies:
-    - {fileID: 2549522002709877332, guid: 53a70891d8c7f2f4db5fafcf092a73d9, type: 3}
-    - {fileID: 2549522002709877332, guid: 53a70891d8c7f2f4db5fafcf092a73d9, type: 3}
-  - _enemies:
-    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
-  - _enemies:
-    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
-    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
-    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
+  _levels:
+  - {fileID: 11400000, guid: a1b2f9fd875297746ace42170be5d818, type: 2}
+  - {fileID: 11400000, guid: 6d1ff4a106ac58b43930aaf0e542d661, type: 2}
+  - {fileID: 11400000, guid: 559a2afde264f6844b6191ec15dd0ca2, type: 2}
   _spavnDelay: 0.5
   _waveCount: 0
 --- !u!1 &6972074384295572010

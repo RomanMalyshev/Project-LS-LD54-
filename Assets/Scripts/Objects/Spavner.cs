@@ -7,7 +7,7 @@ using Utils;
 
 public class Spavner : MonoBehaviour
 {
-    [SerializeField] List<SpawnWave> _spavnQueue;
+    [SerializeField] private List<Level> _levels;
     [SerializeField] float _spavnDelay;
     [SerializeField] private int _waveCount = 0;
 
@@ -15,6 +15,7 @@ public class Spavner : MonoBehaviour
     private int _deadEnemies;
     private AStarPathfinding _pathFinder;
     private Vector3 _targetPosition;
+    private int _currentLevel;
 
     private void Start()
     {
@@ -25,14 +26,15 @@ public class Spavner : MonoBehaviour
             EnemyDie();
         });               
 
-        _view.OnWawesChange.Invoke(_waveCount, _spavnQueue.Count);
+        _view.OnWawesChange.Invoke(_waveCount, _levels[0]._spavnQueue.Count);
     }
 
 
-    public void StartSpawn(AStarPathfinding pathFinder, Vector3 targetPosition)
+    public void StartSpawn(AStarPathfinding pathFinder, Vector3 targetPosition, int currentLevel)
     {
         _pathFinder = pathFinder;
         _targetPosition = targetPosition;
+        _currentLevel = currentLevel;
         StartCoroutine(SpavnNewWave(_pathFinder, _targetPosition));
     }
 
@@ -42,9 +44,9 @@ public class Spavner : MonoBehaviour
         var enemyNumber = 0;
         _deadEnemies = 0;
 
-        while (enemyNumber < _spavnQueue[_waveCount]._enemies.Count)
+        while (enemyNumber < _levels[_currentLevel]._spavnQueue[_waveCount]._enemies.Count)
         {
-            var enemy = Instantiate(_spavnQueue[_waveCount]._enemies[enemyNumber], transform.position, Quaternion.identity, transform);
+            var enemy = Instantiate(_levels[_currentLevel]._spavnQueue[_waveCount]._enemies[enemyNumber], transform.position, Quaternion.identity, transform);
             enemyNumber++;
             enemy.SetPath(startPos, endPoint);
             yield return new WaitForSeconds(_spavnDelay);
@@ -55,24 +57,20 @@ public class Spavner : MonoBehaviour
     {
         _deadEnemies++;
 
-        if (_deadEnemies == _spavnQueue[_waveCount]._enemies.Count)
+        if (_deadEnemies == _levels[_currentLevel]._spavnQueue[_waveCount]._enemies.Count)
         {
-            if (_waveCount + 1 == _spavnQueue.Count)
+            if (_waveCount + 1 == _levels[_currentLevel]._spavnQueue.Count)
             {
                 _view.OnLevelWin.Invoke();
             }
             else
             {
                 _waveCount++;
-                _view.OnWawesChange.Invoke(_waveCount, _spavnQueue.Count);
+                _view.OnWawesChange.Invoke(_waveCount, _levels[_currentLevel]._spavnQueue.Count);
                 StartCoroutine(SpavnNewWave(_pathFinder, _targetPosition));
             }            
         }
     }
 }
 
-[Serializable]
-public class SpawnWave
-{
-    public List<Enemy> _enemies;
-}
+
