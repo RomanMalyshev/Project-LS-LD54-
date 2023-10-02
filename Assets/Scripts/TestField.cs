@@ -86,6 +86,14 @@ public class TestField : MonoBehaviour
             _pathfind.SetWalkableState(fieldObject.Position, false);
         }
 
+        foreach (var invicibleWallPosition in Levels[_levelCount].PositionOfInvicibleWalls)
+        {
+            Instantiate(Levels[_levelCount].InvincibleWall,
+                _fieldModel.GetWorldCenterPosition(invicibleWallPosition.x, invicibleWallPosition.y, -1),
+                Quaternion.identity, _levelContainer.transform);
+            _pathfind.SetWalkableState(invicibleWallPosition, false);
+        }
+        
         _spavner.StartSpawn(_pathfind, mainBuilding.transform.position, _levelCount);
     }   
 
