@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3294426549354567183}
   - component: {fileID: 1889034468819349573}
   m_Layer: 7
-  m_Name: InvicibleWall
+  m_Name: NoBuild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
