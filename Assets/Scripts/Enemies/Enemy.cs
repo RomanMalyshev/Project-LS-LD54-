@@ -51,11 +51,6 @@ public class Enemy : MonoBehaviour
             while (currentTarget != transform.position)
             {
                 transform.position = Vector3.MoveTowards(transform.position, currentTarget, _speed * Time.deltaTime);
-                if (!pathFinder.GetWalkableState(currentTarget))
-                {
-                    EnemyDie();
-                }
-
                 yield return null;
             }
             path.Remove(currentTarget);
