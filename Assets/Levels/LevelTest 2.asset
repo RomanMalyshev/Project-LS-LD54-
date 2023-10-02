@@ -35,9 +35,9 @@ MonoBehaviour:
   - Position: {x: 6, y: 0}
     Object: {fileID: 2346394148850090165, guid: a62c9ec204a368b43a6f7195e90e73c2, type: 3}
   - Position: {x: 1, y: 4}
-    Object: {fileID: 9162656326496470497, guid: cff97a4710a2e72448979da739d8ea32, type: 3}
+    Object: {fileID: 9162656326496470497, guid: 20ee2cb49b7348349abe623606667d25, type: 3}
   - Position: {x: 8, y: 4}
-    Object: {fileID: 9162656326496470497, guid: cff97a4710a2e72448979da739d8ea32, type: 3}
+    Object: {fileID: 9162656326496470497, guid: 20ee2cb49b7348349abe623606667d25, type: 3}
   - Position: {x: 1, y: 1}
     Object: {fileID: 9162656326496470497, guid: 94767d35012911146a007e5dbe710e51, type: 3}
   - Position: {x: 5, y: 4}
@@ -45,18 +45,68 @@ MonoBehaviour:
   - Position: {x: 8, y: 7}
     Object: {fileID: 9162656326496470497, guid: 94767d35012911146a007e5dbe710e51, type: 3}
   notBuild:
-  - {x: 1, y: 1}
+  - {x: 7, y: 8}
+  - {x: 8, y: 8}
+  - {x: 9, y: 8}
+  - {x: 7, y: 7}
+  - {x: 9, y: 7}
+  - {x: 7, y: 6}
+  - {x: 8, y: 6}
+  - {x: 9, y: 6}
+  - {x: 7, y: 5}
+  - {x: 8, y: 5}
+  - {x: 9, y: 5}
+  - {x: 7, y: 4}
+  - {x: 9, y: 4}
+  - {x: 7, y: 3}
+  - {x: 8, y: 3}
+  - {x: 9, y: 3}
+  - {x: 0, y: 5}
+  - {x: 1, y: 5}
+  - {x: 2, y: 5}
+  - {x: 0, y: 4}
+  - {x: 2, y: 4}
+  - {x: 0, y: 3}
+  - {x: 1, y: 3}
+  - {x: 2, y: 3}
+  - {x: 0, y: 2}
+  - {x: 1, y: 2}
+  - {x: 2, y: 2}
+  - {x: 0, y: 1}
+  - {x: 2, y: 1}
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 5, y: 8}
+  - {x: 6, y: 8}
+  - {x: 3, y: 0}
+  - {x: 4, y: 0}
   CellSprite: {fileID: 21300000, guid: b1828369e1086b44aa911dbe1c8ef000, type: 3}
   OriginPosition: {x: 0, y: 0, z: 0}
   SpawnerPosition: {x: 4, y: 8}
   MainBuildingPosition: {x: 5, y: 0}
-  WallsCount: 10
+  WallsCount: 5
   Spavner: {fileID: 5760344736520500557, guid: 8ad11f8f6f26dbc419dfc773b9998b27, type: 3}
   MainBuilding: {fileID: 2346394148850090165, guid: 92b997634350fe547bb1c1fe40414f88, type: 3}
   WallSelf: {fileID: 21300000, guid: 4528f41ec2b4ed74cbe026bbf3aebfb1, type: 3}
   InvincibleWall: {fileID: 2346394148850090165, guid: acbaf73783aecde4dabd5ffcc036e7f3, type: 3}
   _spavnQueue:
   - _enemies:
-    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 2549522002709877332, guid: 53a70891d8c7f2f4db5fafcf092a73d9, type: 3}
+    - {fileID: 2549522002709877332, guid: 53a70891d8c7f2f4db5fafcf092a73d9, type: 3}
+    - {fileID: 2549522002709877332, guid: 53a70891d8c7f2f4db5fafcf092a73d9, type: 3}
   - _enemies:
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 5455081932744673748, guid: 571dcd4eb3f41424f93e37c1f70781f3, type: 3}
+    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
+    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
+    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
+    - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
     - {fileID: 8134446420775762605, guid: d7358d9c51ddf34448f7526db277c08b, type: 3}
