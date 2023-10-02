@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Utils
@@ -21,9 +20,11 @@ namespace Utils
 
         private readonly Dictionary<(int x, int y), SpriteRenderer> _posToSprite = new();
         private Dictionary<(int x, int y), CellState> _posToSelectable = new();
+        private List<Vector2Int> _cellsPos = new();
         private Transform _fieldParent;
         public int GetWidth() => _width;
         public int GetHeight() => _height;
+        public List<Vector2Int> GetCells() => _cellsPos;
 
         public FieldModel(int width, int height, int cellSize, Vector3 originPosition, Sprite cellSprite,
             Transform fieldParent = null)
@@ -34,6 +35,16 @@ namespace Utils
             _originPosition = originPosition;
             _sprite = cellSprite;
             _fieldParent = fieldParent;
+
+            for (var x = 0; x < _width; x++)
+            {
+                for (var y = 0; y < _height; y++)
+                {
+                    _cellsPos.Add(new Vector2Int(x, y));
+                    _posToSelectable.Add((x, y), CellState.selectable);
+                }
+            }
+
             DrawDebugField();
         }
 
@@ -56,17 +67,16 @@ namespace Utils
                     spriteRenderer.color = Color.white;
                     spriteRenderer.sprite = _sprite;
 
-                    _posToSprite.Add((x, y), spriteRenderer);
-                    _posToSelectable.Add((x, y), CellState.selectable);
                     var cellIndexText = new GameObject("FieldTestCell", typeof(TextMesh));
                     cellIndexText.transform.SetParent(debugCells.transform);
-                    cellIndexText.transform.localPosition =
-                        GetWorldPosition(x, y) + new Vector3(_cellSize, _cellSize) * 0.5f;
+                    cellIndexText.transform.localPosition = GetWorldPosition(x, y) + new Vector3(_cellSize, _cellSize) * 0.5f;
                     var cellIndexTextMesh = cellIndexText.GetComponent<TextMesh>();
                     cellIndexTextMesh.text = $"{x}:{y}";
                     cellIndexTextMesh.anchor = TextAnchor.MiddleCenter;
                     cellIndexTextMesh.alignment = TextAlignment.Center;
                     cellIndexTextMesh.fontStyle = FontStyle.Bold;
+                    
+                    _posToSprite.Add((x, y), spriteRenderer);
                 }
             }
 
@@ -139,10 +149,10 @@ namespace Utils
         {
             return _posToSelectable[(position.x, position.y)];
         }
-        
+
         public bool CellPositionExist(Vector2Int position)
         {
-            return _posToSprite.ContainsKey((position.x,position.y));
+            return _posToSprite.ContainsKey((position.x, position.y));
         }
     }
 }
