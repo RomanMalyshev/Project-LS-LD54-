@@ -133,6 +133,15 @@ namespace Utils
                 _positionToNode[new Vector2Int(position.x, position.y)].Walkable = state;
         }
 
+        public bool GetWalkableState(Vector3 position)
+        {
+            var pos = _fieldModel.GetCellPosition(position);
+            if (_positionToNode.ContainsKey(new Vector2Int(pos.x, pos.y)))
+                return _positionToNode[new Vector2Int(pos.x, pos.y)].Walkable;
+
+            return false;
+        }
+
         public void Reset()
         {
             foreach (var node in _positionToNode)

@@ -20,7 +20,7 @@ public class TestField : MonoBehaviour
     private int _levelCount = 0;
     private int _wallsAvalible;
 
-
+    private Vector2Int? _lastWallPosition;
     private void Start()
     {
         _view = Globals.Global.View;
@@ -55,6 +55,7 @@ public class TestField : MonoBehaviour
 
     private void CreateLevel()
     {
+        _lastWallPosition = null;
         _view.OnLevelStart.Invoke();
 
         _wallsAvalible = Levels[_levelCount].WallsCount;
@@ -114,6 +115,7 @@ public class TestField : MonoBehaviour
                 _pathfind.SetWalkableState(targetPosition.x, targetPosition.y, false);
                 _fieldModel.SetSprite(targetPosition.x, targetPosition.y, Levels[_levelCount].WallSelf);
                 _fieldModel.SetSelectable(targetPosition, FieldModel.CellState.notSelectable);
+                _lastWallPosition = targetPosition;
             }
             else
             {

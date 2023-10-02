@@ -40,20 +40,25 @@ public class Enemy : MonoBehaviour
         _moveRoutine = StartCoroutine(MoveRoutine( startPos,endPoint));
     }
 
-    private IEnumerator MoveRoutine(AStarPathfinding startPos, Vector3 endPoint)
+    private IEnumerator MoveRoutine(AStarPathfinding pathFinder, Vector3 endPoint)
     {
-        var path = startPos.FindWorldPath(transform.position, endPoint);
+        var path = pathFinder.FindWorldPath(transform.position, endPoint);
         
-        while (path.Count > 0)
+        while (path != null && path.Count > 0)
         {
             var currentTarget = path[1];
             while (currentTarget != transform.position)
             {
                 transform.position = Vector3.MoveTowards(transform.position, currentTarget, _speed * Time.deltaTime);
+                if (!pathFinder.GetWalkableState(currentTarget))
+                {
+                    EnemyDie();
+                }
+
                 yield return null;
             }
             path.Remove(currentTarget);
-            path = startPos.FindWorldPath(transform.position, endPoint);
+            path = pathFinder.FindWorldPath(transform.position, endPoint);
             yield return null;
         }
     }
