@@ -48,6 +48,8 @@ MonoBehaviour:
   _levels:
   - {fileID: 11400000, guid: a1b2f9fd875297746ace42170be5d818, type: 2}
   - {fileID: 11400000, guid: 6d1ff4a106ac58b43930aaf0e542d661, type: 2}
+  - {fileID: 11400000, guid: 8a26e958b5731cb46834816844afa572, type: 2}
+  - {fileID: 11400000, guid: a8fef808e789fe74981b1f4c346a9da1, type: 2}
   _spavnDelay: 0.7
   _waveCount: 0
 --- !u!1 &6972074384295572010
