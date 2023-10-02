@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7473685223873966684}
   - component: {fileID: 3294426549354567183}
   - component: {fileID: 1889034468819349573}
-  m_Layer: 0
-  m_Name: Wall
+  m_Layer: 7
+  m_Name: InvicibleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f627705318e42424bb9f36228953deea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c83f0c9b15adf64cb284a9bee9f3fc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

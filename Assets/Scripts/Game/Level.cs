@@ -24,6 +24,7 @@ public class Level : ScriptableObject
     public int CellSize;
 
     public List<FieldObjectPosition> FieldObjects;
+    public List<Vector2Int> PositionOfInvicibleWalls;
     public Sprite CellSprite;
 
     public Vector3 OriginPosition;
@@ -38,7 +39,7 @@ public class Level : ScriptableObject
 
     public GameObject MainBuilding;
     public Sprite WallSelf;
-    public Sprite InvincibleWall;
+    public GameObject InvincibleWall;
 
     [Header("References")]
 
