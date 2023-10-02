@@ -16,8 +16,8 @@ public class UIController : MonoBehaviour
 
     private View _view;
 
-
-    private void Start()
+    
+    private void Awake()
     {
         _view = Globals.Global.View;
 
