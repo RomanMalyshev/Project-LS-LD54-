@@ -67,14 +67,14 @@ namespace Utils
                     spriteRenderer.color = Color.white;
                     spriteRenderer.sprite = _sprite;
 
-                    var cellIndexText = new GameObject("FieldTestCell", typeof(TextMesh));
-                    cellIndexText.transform.SetParent(debugCells.transform);
-                    cellIndexText.transform.localPosition = GetWorldPosition(x, y) + new Vector3(_cellSize, _cellSize) * 0.5f;
-                    var cellIndexTextMesh = cellIndexText.GetComponent<TextMesh>();
-                    cellIndexTextMesh.text = $"{x}:{y}";
-                    cellIndexTextMesh.anchor = TextAnchor.MiddleCenter;
-                    cellIndexTextMesh.alignment = TextAlignment.Center;
-                    cellIndexTextMesh.fontStyle = FontStyle.Bold;
+                    //var cellIndexText = new GameObject("FieldTestCell", typeof(TextMesh));
+                    //cellIndexText.transform.SetParent(debugCells.transform);
+                    //cellIndexText.transform.localPosition = GetWorldPosition(x, y) + new Vector3(_cellSize, _cellSize) * 0.5f;
+                    //var cellIndexTextMesh = cellIndexText.GetComponent<TextMesh>();
+                    //cellIndexTextMesh.text = $"{x}:{y}";
+                    //cellIndexTextMesh.anchor = TextAnchor.MiddleCenter;
+                    //cellIndexTextMesh.alignment = TextAlignment.Center;
+                    //cellIndexTextMesh.fontStyle = FontStyle.Bold;
                     
                     _posToSprite.Add((x, y), spriteRenderer);
                 }

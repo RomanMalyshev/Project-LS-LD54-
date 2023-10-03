@@ -2717,6 +2717,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2891267422045580963, guid: 151ef777da6faba4988fd7dc2f76e03a, type: 3}
+      propertyPath: TestField
+      value: 
+      objectReference: {fileID: 1162666517}
+    - target: {fileID: 2891267422045580963, guid: 151ef777da6faba4988fd7dc2f76e03a, type: 3}
+      propertyPath: UIController
+      value: 
+      objectReference: {fileID: 1162666519}
     - target: {fileID: 5828065851305104754, guid: 151ef777da6faba4988fd7dc2f76e03a, type: 3}
       propertyPath: m_RootOrder
       value: 12

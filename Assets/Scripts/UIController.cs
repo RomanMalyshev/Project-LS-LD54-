@@ -16,11 +16,10 @@ public class UIController : MonoBehaviour
 
     private View _view;
 
-    
-    private void Awake()
+    public void Init()
     {
         _view = Globals.Global.View;
-
+      
         _view.OnHPChange.Subscribe((health) =>
         {
             HPChange(health);
@@ -55,6 +54,8 @@ public class UIController : MonoBehaviour
         _levelWinText.gameObject.SetActive(false);
         _levelLostText.gameObject.SetActive(false);
     }
+    
+    
 
     private void LevelLost()
     {

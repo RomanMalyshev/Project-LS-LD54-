@@ -22,14 +22,13 @@ public class TestField : MonoBehaviour
 
     private Vector2Int? _lastWallPosition;
 
-    private void Start()
+    public void Init()
     {
         Globals.Global.PlayerBlockPath.Subscribe(() =>
         {
             if (_lastWallPosition != null)
             {
                 _fieldModel.SetSprite(_lastWallPosition.Value.x, _lastWallPosition.Value.y, Levels[_levelCount].CellSprite);
-                Levels[_levelCount].WallsCount++;
                 _wallsAvalible++;
                 _view.OnWallsCountChange.Invoke(_wallsAvalible);
                 _pathfind.SetWalkableState(_lastWallPosition.Value, true);
@@ -140,10 +139,10 @@ public class TestField : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            _fieldModel.Reset();
-            _pathfind.Reset();
-        }
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    _fieldModel.Reset();
+        //    _pathfind.Reset();
+        //}
     }
 }
